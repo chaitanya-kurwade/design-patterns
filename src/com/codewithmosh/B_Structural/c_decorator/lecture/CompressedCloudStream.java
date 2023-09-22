@@ -1,0 +1,22 @@
+package com.codewithmosh.B_Structural.c_decorator.lecture;
+
+public class CompressedCloudStream implements Stream{
+
+	private Stream stream;
+	
+	public CompressedCloudStream(Stream stream) {
+		this.stream = stream;
+	}
+	
+	@Override
+	public void write(String data) {
+		var compressed = compress(data);
+		stream.write(compressed);
+	}
+
+	public String compress(String data) {
+		var compressed = data.substring(0,5);
+		return compressed;		
+	}
+	
+}
